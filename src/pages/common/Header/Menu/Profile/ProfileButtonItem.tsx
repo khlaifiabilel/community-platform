@@ -1,16 +1,8 @@
 import * as React from 'react'
-import styled from '@emotion/styled'
 import { Button } from 'oa-components'
-import type { DisplayProps } from 'styled-system'
-import { display } from 'styled-system'
 import { observer, inject } from 'mobx-react'
 import type { MobileMenuStore } from 'src/stores/MobileMenu/mobilemenu.store'
 import { Link } from 'react-router-dom'
-
-const ButtonSign = styled(Button as any)<DisplayProps>`
-  ${display};
-  cursor: pointer;
-`
 interface IProps {
   link: string
   text: string
@@ -43,7 +35,7 @@ export class ProfileButtonItem extends React.Component<IProps> {
     return (
       <>
         <Link to={this.props.link} style={{ minWidth: 'auto' }}>
-          <ButtonSign
+          <Button
             onClick={() => this.props.isMobile && menu.toggleMobilePanel()}
             variant={this.props.variant}
             {...(this.props.isMobile ? { large: true } : {})}
@@ -56,7 +48,7 @@ export class ProfileButtonItem extends React.Component<IProps> {
             }}
           >
             {this.props.text}
-          </ButtonSign>
+          </Button>
         </Link>
       </>
     )
